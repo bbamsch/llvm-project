@@ -371,6 +371,8 @@ TargetInfo *AllocateTarget(const llvm::Triple &Triple,
     // TODO: add cases for FreeBSD, NetBSD, RTEMS once tested.
     if (os == llvm::Triple::Linux)
       return new LinuxTargetInfo<RISCV64TargetInfo>(Triple, Opts);
+    if (os == llvm::Triple::OpenBSD)
+      return new OpenBSDTargetInfo<RISCV64TargetInfo>(Triple, Opts);
     return new RISCV64TargetInfo(Triple, Opts);
 
   case llvm::Triple::sparc:
