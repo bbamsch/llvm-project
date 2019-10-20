@@ -10579,6 +10579,8 @@
 // RUN:   | FileCheck -match-full-lines -check-prefix=RISCV64 %s
 // RUN: %clang_cc1 -E -dM -ffreestanding -fgnuc-version=4.2.1 -triple=riscv64-unknown-linux < /dev/null \
 // RUN:   | FileCheck -match-full-lines -check-prefixes=RISCV64,RISCV64-LINUX %s
+// RUN: %clang_cc1 -E -dM -ffreestanding -fgnuc-version=4.2.1 -triple=riscv64-unknown-openbsd < /dev/null \
+// RUN:   | FileCheck -match-full-lines -check-prefixes=RISCV64,RISCV64-OPENBSD %s
 // RISCV64: #define _LP64 1
 // RISCV64: #define __ATOMIC_ACQUIRE 2
 // RISCV64: #define __ATOMIC_ACQ_REL 4
@@ -10781,3 +10783,4 @@
 // RISCV64-LINUX: #define __unix__ 1
 // RISCV64-LINUX: #define linux 1
 // RISCV64-LINUX: #define unix 1
+// RISCV64-OPENBSD: #define __OpenBSD__ 1
